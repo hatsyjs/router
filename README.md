@@ -12,7 +12,7 @@ Hatsy Router
 [build-status-img]: https://github.com/hatsyjs/router/workflows/Build/badge.svg
 [build-status-link]: https://github.com/hatsyjs/router/actions?query=workflow:Build
 [codecov-image]: https://codecov.io/gh/hatsyjs/router/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/hatsyjs/router/tree/master/packages/router/src
+[codecov-url]: https://codecov.io/gh/hatsyjs/router
 [github-image]: https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational
 [github-url]: https://github.com/hatsyjs/router
 [api-docs-image]: https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational
