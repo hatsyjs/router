@@ -1,4 +1,4 @@
-import { HttpForwarding, httpListener, HttpMeans, Rendering, RenderMeans } from '@hatsy/hatsy';
+import { HttpForwarding, HttpMeans, Rendering, RenderMeans } from '@hatsy/hatsy';
 import type { RequestContext } from '@hatsy/hatsy/core';
 import { TestHttpServer } from '@hatsy/hatsy/testing';
 import type { RouteMatcher } from '@hatsy/route-match';
@@ -11,6 +11,7 @@ import {
   rmatchDirSep,
   URLRoute,
 } from '@hatsy/route-match';
+import { noop } from '@proc7ts/primitives';
 import type { RouterMeans } from '../router.means';
 import { Routing } from '../routing.capability';
 import { dispatchByPattern } from './dispatch-by-pattern.handler';
@@ -27,14 +28,14 @@ describe('dispatchByPattern', () => {
   });
 
   beforeEach(() => {
-    server.listener.mockReset();
+    server.listenBy(noop);
   });
 
   it('follows matching route', async () => {
 
     const wrongHandler = jest.fn();
 
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern([
@@ -49,7 +50,7 @@ describe('dispatchByPattern', () => {
                 },
               },
             ])),
-    ));
+    );
 
     const response = await server.get('/test');
 
@@ -60,7 +61,7 @@ describe('dispatchByPattern', () => {
 
     const wrongHandler = jest.fn();
 
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -72,7 +73,7 @@ describe('dispatchByPattern', () => {
                 },
               }),
             })),
-    ));
+    );
 
     const response = await server.get('/dir/test');
 
@@ -90,7 +91,7 @@ describe('dispatchByPattern', () => {
       },
     });
 
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -105,7 +106,7 @@ describe('dispatchByPattern', () => {
                 );
               },
             })),
-    ));
+    );
 
     const response = await server.get('/dir/test;attr=value');
 
@@ -113,7 +114,7 @@ describe('dispatchByPattern', () => {
     expect(wrongHandler).not.toHaveBeenCalled();
   });
   it('extracts route tail', async () => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -122,14 +123,14 @@ describe('dispatchByPattern', () => {
                 renderJson({ route: route.toString() });
               },
             })),
-    ));
+    );
 
     const response = await server.get('/test/nested?param=value');
 
     expect(JSON.parse(await response.body())).toEqual({ route: 'nested?param=value' });
   });
   it('uses matching route as tail', async () => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -138,14 +139,14 @@ describe('dispatchByPattern', () => {
                 renderJson({ route: route.toString() });
               },
             })),
-    ));
+    );
 
     const response = await server.get('/test/nested?param=value');
 
     expect(JSON.parse(await response.body())).toEqual({ route: 'test/nested?param=value' });
   });
   it('extracts route tail with custom function', async () => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -166,14 +167,14 @@ describe('dispatchByPattern', () => {
                 return tail;
               },
             })),
-    ));
+    );
 
     const response = await server.get('/test/nested?param=value');
 
     expect(JSON.parse(await response.body())).toEqual({ route: 'nested?param=value' });
   });
   it('captures route matches', async () => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         Rendering
             .and(Routing)
             .for(dispatchByPattern({
@@ -189,14 +190,14 @@ describe('dispatchByPattern', () => {
                 renderJson(captured);
               },
             })),
-    ));
+    );
 
     const response = await server.get('/test/nested');
 
     expect(JSON.parse(await response.body())).toEqual([['capture', 'dir', 'test'], ['dirs', 1, 2]]);
   });
   it('builds custom route', async () => {
-    server.listener.mockImplementation(httpListener(Rendering.for(
+    server.handleBy(Rendering.for(
         Routing.with<HttpMeans & RenderMeans, MatrixRoute>({
           buildRoute({ requestAddresses }) {
             return matrixRoute(requestAddresses.url);
@@ -208,14 +209,14 @@ describe('dispatchByPattern', () => {
             renderJson({ attr: fullRoute.path[0].attrs.get('attr') });
           },
         })),
-    )));
+    ));
 
     const response = await server.get('/test;attr=val/nested?param=value');
 
     expect(JSON.parse(await response.body())).toEqual({ attr: 'val' });
   });
   it('extracts URL from trusted forwarding info', async () => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         HttpForwarding
             .with({ trusted: true })
             .and(Rendering)
@@ -226,7 +227,7 @@ describe('dispatchByPattern', () => {
                 renderJson({ href, ip });
               },
             })),
-    ));
+    );
 
     const response = await server.get(
         '/test/nested?param=value',

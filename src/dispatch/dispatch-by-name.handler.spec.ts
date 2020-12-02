@@ -1,4 +1,4 @@
-import { httpListener, Rendering, RenderMeans } from '@hatsy/hatsy';
+import { Rendering, RenderMeans } from '@hatsy/hatsy';
 import { Logging, RequestContext } from '@hatsy/hatsy/core';
 import { suppressedLog, TestHttpServer } from '@hatsy/hatsy/testing';
 import type { RouterMeans } from '../router.means';
@@ -17,7 +17,7 @@ describe('dispatchByName', () => {
   });
 
   beforeEach(() => {
-    server.listener.mockImplementation(httpListener(
+    server.handleBy(
         {
           handleBy(handler) {
             return Logging.logBy(suppressedLog).for(handler);
@@ -37,7 +37,7 @@ describe('dispatchByName', () => {
                 }),
               }),
             })),
-    ));
+    );
   });
 
   it('dispatches to matching route', async () => {
