@@ -23,7 +23,7 @@
   "dependencies": {
     "@hatsy/http-header-value": "^3.5.3",
     "@hatsy/route-match": "^1.2.0",
-    "@proc7ts/primitives": "^1.5.1"
+    "@proc7ts/primitives": "^1.6.0"
   },
   "peerDependencies": {
     "@hatsy/hatsy": "^2.1.0"
