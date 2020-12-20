@@ -39,7 +39,7 @@ export interface DispatchPattern<
    *
    * The extracted route tail is passed to the {@link to handler}.
    *
-   * @param context  Route processing context of the matching route.
+   * @param context - Route processing context of the matching route.
    *
    * @returns  Extracted tail of the matching route.
    *
@@ -117,7 +117,7 @@ function handlerByDispatchPattern<TRoute extends PathRoute, TMeans extends Route
  *
  * @typeParam TRoute  A type of supported route.
  * @typeParam TMeans  A type of route processing means.
- * @param routes  Either a routing dispatch pattern, or iterable of routing dispatch patterns.
+ * @param routes - Either a routing dispatch pattern, or iterable of routing dispatch patterns.
  *
  * @returns Route processing handler.
  */

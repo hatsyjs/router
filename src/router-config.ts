@@ -32,8 +32,8 @@ export namespace RouterConfig {
      *
      * The `this` parameter is bound to current request processing means.
      *
-     * @param pattern  Pattern string in supported format.
-     * @param context  Current request processing context.
+     * @param pattern - Pattern string in supported format.
+     * @param context - Current request processing context.
      *
      * @default Supports patterns in simple format (`simpleRoutePattern()`).
      */
@@ -63,7 +63,7 @@ export namespace RouterConfig {
     /**
      * Builds a route based on incoming request.
      *
-     * @param context  Request processing context.
+     * @param context - Request processing context.
      *
      * @returns New URL route.
      *

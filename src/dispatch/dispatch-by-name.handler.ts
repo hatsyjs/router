@@ -29,7 +29,7 @@ export interface DispatchNames<TMeans extends RouterMeans> {
  * Target route handler receives a route tail without first entry.
  *
  * @typeParam TMeans  Supported route processing means.
- * @param names  A map of request processing handlers for corresponding route entry names.
+ * @param names - A map of request processing handlers for corresponding route entry names.
  *
  * @returns New route processing handler.
  */

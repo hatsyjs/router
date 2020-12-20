@@ -23,7 +23,7 @@ export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute
   /**
    * Configures routing capability that constructs a route by incoming HTTP request.
    *
-   * @param config  Router configuration without route build.
+   * @param config - Router configuration without route build.
    *
    * @returns New request routing capability.
    */
@@ -34,7 +34,7 @@ export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute
   /**
    * Configures routing capability with custom route builder.
    *
-   * @param config  Route configuration with custom route builder.
+   * @param config - Route configuration with custom route builder.
    *
    * @returns New request routing capability.
    */
