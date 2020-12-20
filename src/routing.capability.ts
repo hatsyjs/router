@@ -14,8 +14,8 @@ import type { RouterMeans } from './router.means';
  *
  * Provides {@link RouterMeans request routing means} for handlers.
  *
- * @typeParam TInput  A type of request processing means required in order to apply this capability.
- * @typeParam TRoute  Supported route type.
+ * @typeParam TInput - A type of request processing means required in order to apply this capability.
+ * @typeParam TRoute - Supported route type.
  */
 export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute>
     extends RequestCapability<TInput, RouterMeans<TRoute>> {

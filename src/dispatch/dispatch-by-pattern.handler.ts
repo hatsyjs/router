@@ -12,8 +12,8 @@ import type { RouterMeans } from '../router.means';
  *
  * Declares a route handler to delegate request processing to when the route matches target {@link on pattern}.
  *
- * @typeParam TRoute  A type of supported route.
- * @typeParam TMeans  A type of route processing means.
+ * @typeParam TRoute - A type of supported route.
+ * @typeParam TMeans - A type of route processing means.
  */
 export interface DispatchPattern<
     TRoute extends PathRoute = URLRoute,
@@ -30,7 +30,7 @@ export interface DispatchPattern<
   /**
    * A route handler to dispatch request processing to when the route matches the {@link on pattern}.
    *
-   * This handler would receive a [[tail]] of the matching route.
+   * This handler would receive a {@link tail} of the matching route.
    */
   readonly to: RequestHandlerMethod<this, TMeans>;
 
@@ -115,8 +115,8 @@ function handlerByDispatchPattern<TRoute extends PathRoute, TMeans extends Route
  * Selects the first matching pattern and delegates request processing to its handler. If the handler not responded,
  * then tries the next matching pattern, and so on until responded or no routes left.
  *
- * @typeParam TRoute  A type of supported route.
- * @typeParam TMeans  A type of route processing means.
+ * @typeParam TRoute - A type of supported route.
+ * @typeParam TMeans - A type of route processing means.
  * @param routes - Either a routing dispatch pattern, or iterable of routing dispatch patterns.
  *
  * @returns Route processing handler.

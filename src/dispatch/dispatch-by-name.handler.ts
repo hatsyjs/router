@@ -8,7 +8,7 @@ import type { RouterMeans } from '../router.means';
 /**
  * Request processing handlers for route entry names.
  *
- * @typeParam TMeans  Supported route processing means.
+ * @typeParam TMeans - Supported route processing means.
  */
 export interface DispatchNames<TMeans extends RouterMeans> {
 
@@ -28,7 +28,7 @@ export interface DispatchNames<TMeans extends RouterMeans> {
  *
  * Target route handler receives a route tail without first entry.
  *
- * @typeParam TMeans  Supported route processing means.
+ * @typeParam TMeans - Supported route processing means.
  * @param names - A map of request processing handlers for corresponding route entry names.
  *
  * @returns New route processing handler.

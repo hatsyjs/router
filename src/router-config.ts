@@ -10,8 +10,8 @@ import type { RouterMeans } from './router.means';
 /**
  * Router configuration.
  *
- * @typeParam TMeans  A type of incoming request processing means.
- * @typeParam TRoute  Supported route type.
+ * @typeParam TMeans - A type of incoming request processing means.
+ * @typeParam TRoute - Supported route type.
  */
 export type RouterConfig<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> =
     | RouterConfig.DefaultRoute<TMeans, TRoute>
@@ -22,8 +22,8 @@ export namespace RouterConfig {
   /**
    * Base router configuration.
    *
-   * @typeParam TMeans  A type of incoming request processing means.
-   * @typeParam TRoute  Supported route type.
+   * @typeParam TMeans - A type of incoming request processing means.
+   * @typeParam TRoute - Supported route type.
    */
   export interface Base<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> {
 
@@ -44,8 +44,8 @@ export namespace RouterConfig {
   /**
    * Router configuration with default route builder.
    *
-   * @typeParam TMeans  A type of incoming request processing means.
-   * @typeParam TRoute  Supported route type.
+   * @typeParam TMeans - A type of incoming request processing means.
+   * @typeParam TRoute - Supported route type.
    */
   export interface DefaultRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> extends Base<TMeans, TRoute> {
 
@@ -56,7 +56,7 @@ export namespace RouterConfig {
   /**
    * Router configuration with custom route builder.
    *
-   * @typeParam TMeans  A type of incoming HTTP request processing means.
+   * @typeParam TMeans - A type of incoming HTTP request processing means.
    */
   export interface CustomRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> extends Base<TMeans, TRoute> {
 

@@ -7,7 +7,7 @@ import type { PathRoute, RouteMatch, RoutePattern, URLRoute } from '@hatsy/route
 /**
  * Request routing means.
  *
- * @typeParam TRoute  A type of supported route.
+ * @typeParam TRoute - A type of supported route.
  */
 export interface RouterMeans<TRoute extends PathRoute = URLRoute> {
 
