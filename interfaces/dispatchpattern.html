@@ -127,10 +127,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="on" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> on</h3>
-					<div class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RoutePattern</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RoutePattern</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/8d779ef/src/dispatch/dispatch-by-pattern.handler.ts#L28">router/src/dispatch/dispatch-by-pattern.handler.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/456de4f/src/dispatch/dispatch-by-pattern.handler.ts#L24">router/src/dispatch/dispatch-by-pattern.handler.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,10 +143,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="to" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> to</h3>
-					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RequestHandlerMethod</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RequestHandlerMethod</span><span class="tsd-signature-symbol">&lt;</span><a href="dispatchpattern.html" class="tsd-signature-type" data-tsd-kind="Interface">DispatchPattern</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/8d779ef/src/dispatch/dispatch-by-pattern.handler.ts#L35">router/src/dispatch/dispatch-by-pattern.handler.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/456de4f/src/dispatch/dispatch-by-pattern.handler.ts#L31">router/src/dispatch/dispatch-by-pattern.handler.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,9 +162,41 @@
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="tail" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tail</h3>
-					<div class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-					</aside>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">tail<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TRoute</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/router/blob/456de4f/src/dispatch/dispatch-by-pattern.handler.ts#L45">router/src/dispatch/dispatch-by-pattern.handler.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Extracts route tail from matching route.</p>
+								</div>
+								<p>The extracted route tail is passed to the <a href="dispatchpattern.html#to">handler</a>.</p>
+								<dl class="tsd-comment-tags">
+									<dt>default</dt>
+									<dd><p>Extracts a matching route tail starting from the first capture/wildcard. If no captures or wildcards
+										present in pattern, then full route extracted.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <span class="tsd-signature-type">RequestContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Route processing context of the matching route.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TRoute</span></h4>
+							<p>Extracted tail of the matching route.</p>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>

@@ -136,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">build<wbr>Route<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/8d779ef/src/router-config.ts#L52">router/src/router-config.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/hatsyjs/router/blob/456de4f/src/router-config.ts#L48">router/src/router-config.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -146,10 +146,46 @@
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="routepattern" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> route<wbr>Pattern</h3>
-					<div class="tsd-signature tsd-kind-icon">route<wbr>Pattern<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="routerconfig.base.html">Base</a>.<a href="routerconfig.base.html#routepattern">routePattern</a></p>
-					</aside>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">route<wbr>Pattern<span class="tsd-signature-symbol">(</span>pattern<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol"> &amp; </span><a href="routermeans.html" class="tsd-signature-type" data-tsd-kind="Interface">RouterMeans</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RoutePattern</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="routerconfig.base.html">Base</a>.<a href="routerconfig.base.html#routepattern">routePattern</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/hatsyjs/router/blob/456de4f/src/router-config.ts#L36">router/src/router-config.ts:36</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A parser of route pattern string.</p>
+								</div>
+								<p>The <code>this</code> parameter is bound to current request processing means.</p>
+								<dl class="tsd-comment-tags">
+									<dt>default</dt>
+									<dd><p>Supports patterns in simple format (<code>simpleRoutePattern()</code>).</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pattern: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Pattern string in supported format.</p>
+									</div>
+								</li>
+								<li>
+									<h5>context: <span class="tsd-signature-type">RequestContext</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMeans</span><span class="tsd-signature-symbol"> &amp; </span><a href="routermeans.html" class="tsd-signature-type" data-tsd-kind="Interface">RouterMeans</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Current request processing context.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RoutePattern</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TRoute</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
