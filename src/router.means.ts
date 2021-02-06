@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/router
- */
 import type { PathRoute, RouteMatch, RoutePattern, URLRoute } from '@hatsy/route-match';
 
 /**

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/router
- */
 import type { HttpMeans } from '@hatsy/hatsy';
 import type { RequestContext } from '@hatsy/hatsy/core';
 import type { PathRoute, RoutePattern, URLRoute } from '@hatsy/route-match';

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/router
- */
 import type { RequestHandler, RequestHandlerMethod, RequestModification } from '@hatsy/hatsy/core';
 import type { RouterMeans } from '../router.means';
 

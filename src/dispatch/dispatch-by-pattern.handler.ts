@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @hatsy/router
- */
 import { RequestContext, requestHandler, RequestHandler, RequestHandlerMethod, requestUpdate } from '@hatsy/hatsy/core';
 import { PathRoute, RouteCaptor, routeMatch, RouteMatcher, RoutePattern, URLRoute } from '@hatsy/route-match';
 import { isIterable, lazyValue } from '@proc7ts/primitives';
