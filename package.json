@@ -13,13 +13,9 @@
     "url": "https://github.com/hatsyjs/router/issues"
   },
   "type": "module",
-  "main": "./dist/router.cjs",
-  "module": "./dist/router.js",
+  "main": "./dist/router.js",
   "types": "./index.d.ts",
-  "exports": {
-    "import": "./dist/router.js",
-    "require": "./dist/router.cjs"
-  },
+  "exports": "./dist/router.js",
   "dependencies": {
     "@hatsy/http-header-value": "^3.5.3",
     "@hatsy/route-match": "^1.3.0",
