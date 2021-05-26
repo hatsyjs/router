@@ -11,6 +11,7 @@ import {
   rmatchDirSep,
   URLRoute,
 } from '@hatsy/route-match';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { noop } from '@proc7ts/primitives';
 import type { RouterMeans } from '../router.means';
 import { Routing } from '../routing.capability';
@@ -33,7 +34,7 @@ describe('dispatchByPattern', () => {
 
   it('follows matching route', async () => {
 
-    const wrongHandler = jest.fn();
+    const wrongHandler = jest.fn<void, []>();
 
     server.handleBy(
         Rendering
