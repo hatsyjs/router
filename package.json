@@ -2,6 +2,11 @@
   "name": "@hatsy/router",
   "version": "2.3.0",
   "description": "Hatsy router",
+  "keywords": [
+    "http-middleware",
+    "http-router",
+    "routing"
+  ],
   "homepage": "https://github.com/hatsyjs/router",
   "repository": {
     "type": "git",
