@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module Module @hatsy/router
+ * @module @hatsy/router
  */
 export * from './dispatch';
 export * from './router.means';

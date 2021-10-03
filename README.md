@@ -36,8 +36,8 @@ The latter has the following properties:
 
 The [@hatsy/route-match] library performs route parsing and matching. 
 
-[Routing]: https://hatsyjs.github.io/kit/modules/@hatsy_router.html#Routing-1
-[RouterMeans]: https://hatsyjs.github.io/kit/interfaces/@hatsy_router.RouterMeans.html
+[Routing]: https://hatsyjs.github.io/router/interfaces/Routing.html
+[RouterMeans]: https://hatsyjs.github.io/router/interfaces/RouterMeans.html
 [@hatsy/route-match]: https://www.npmjs.com/package/@hatsy/route-match 
 
 
@@ -120,4 +120,4 @@ server.listen(8080);
 
 
 [URLRoute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
-[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern 
+[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern 
