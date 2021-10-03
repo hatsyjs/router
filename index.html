@@ -1,208 +1,53 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hatsy router</title>
-	<meta name="description" content="Documentation for Hatsy router">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">Hatsy router</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>Hatsy router</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#hatsy-router" id="hatsy-router" style="color: inherit; text-decoration: none;">
-					<h1>Hatsy Router</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/@hatsy/router"><img src="https://img.shields.io/npm/v/@hatsy/router.svg?logo=npm" alt="NPM"></a>
-					<a href="https://github.com/hatsyjs/router/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/router/workflows/Build/badge.svg" alt="Build Status"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/router&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/efc90a7b4a2846afb23be5975ad5fbed" alt="Code Quality"></a>
-					<a href="https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/router&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/efc90a7b4a2846afb23be5975ad5fbed" alt="Coverage"></a>
-					<a href="https://github.com/hatsyjs/router"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
-				<a href="https://hatsyjs.github.io/router"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
-				<a href="#routing" id="routing" style="color: inherit; text-decoration: none;">
-					<h2>Routing</h2>
-				</a>
-				<p>This module contains a <a href="https://hatsyjs.github.io/kit/modules/@hatsy_router.html#Routing-1">Routing</a> capability that extends request processing context with
-				<a href="https://hatsyjs.github.io/kit/interfaces/@hatsy_router.RouterMeans.html">request routing means</a>.</p>
-				<p>The latter has the following properties:</p>
-				<ul>
-					<li><code>fullRoute</code> original route.</li>
-					<li><code>route</code> matching route. E.g. a tail section of original route.</li>
-					<li><code>routeMatch</code> a successful match of the route(s) against the pattern(s). </li>
-				</ul>
-				<p>The <a href="https://www.npmjs.com/package/@hatsy/route-match">@hatsy/route-match</a> library performs route parsing and matching. </p>
-				<a href="#dispatch" id="dispatch" style="color: inherit; text-decoration: none;">
-					<h2>Dispatch</h2>
-				</a>
-				<p>Once <a href="https://hatsyjs.github.io/kit/modules/@hatsy_router.html#Routing-1">Routing</a> capability applied the request processing can be dispatched by matching route by one of the dispatchers.</p>
-				<a href="#dispatchbyname" id="dispatchbyname" style="color: inherit; text-decoration: none;">
-					<h3>dispatchByName()</h3>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">httpListener</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/hatsy&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">dispatchByName</span><span style="color: #000000">, </span><span style="color: #001080">Routing</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/router&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createServer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http&#039;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Hatsy router</title><meta name="description" content="Documentation for Hatsy router"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Hatsy router</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>Hatsy router</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#hatsy-router" id="hatsy-router" style="color: inherit; text-decoration: none;">
+  <h1>Hatsy Router</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/@hatsy/router"><img src="https://img.shields.io/npm/v/@hatsy/router.svg?logo=npm" alt="NPM"></a>
+<a href="https://github.com/hatsyjs/router/actions?query=workflow:Build"><img src="https://github.com/hatsyjs/router/workflows/Build/badge.svg" alt="Build Status"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/router&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/efc90a7b4a2846afb23be5975ad5fbed" alt="Code Quality"></a>
+<a href="https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hatsyjs/router&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/efc90a7b4a2846afb23be5975ad5fbed" alt="Coverage"></a>
+<a href="https://github.com/hatsyjs/router"><img src="https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational" alt="GitHub Project"></a>
+<a href="https://hatsyjs.github.io/router"><img src="https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational" alt="API Documentation"></a></p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #795E26">createServer</span><span style="color: #000000">(</span><span style="color: #795E26">httpListener</span><span style="color: #000000">(</span>
-<span style="color: #000000">    </span><span style="color: #001080">Routing</span><span style="color: #000000">.</span><span style="color: #795E26">for</span><span style="color: #000000">(</span><span style="color: #795E26">dispatchByName</span><span style="color: #000000">({</span>
-<span style="color: #000000">      </span><span style="color: #001080">api:</span><span style="color: #000000"> </span><span style="color: #001080">apiHandler</span><span style="color: #000000">,       </span><span style="color: #008000">// Handle API request under `/api` route </span>
-<span style="color: #000000">      </span><span style="color: #001080">assets:</span><span style="color: #000000"> </span><span style="color: #001080">assetsHandler</span><span style="color: #000000">, </span><span style="color: #008000">// Serve static assets under `/assets` route</span>
-<span style="color: #000000">    })),</span>
-<span style="color: #000000">));</span>
+<a href="#routing" id="routing" style="color: inherit; text-decoration: none;">
+  <h2>Routing</h2>
+</a>
+<p>This module contains a <a href="https://hatsyjs.github.io/router/interfaces/Routing.html">Routing</a> capability that extends request processing context with
+<a href="https://hatsyjs.github.io/router/interfaces/RouterMeans.html">request routing means</a>.</p>
+<p>The latter has the following properties:</p>
+<ul>
+<li><code>fullRoute</code> original route.</li>
+<li><code>route</code> matching route. E.g. a tail section of original route.</li>
+<li><code>routeMatch</code> a successful match of the route(s) against the pattern(s).</li>
+</ul>
+<p>The <a href="https://www.npmjs.com/package/@hatsy/route-match">@hatsy/route-match</a> library performs route parsing and matching. </p>
 
-<span style="color: #001080">server</span><span style="color: #000000">.</span><span style="color: #795E26">listen</span><span style="color: #000000">(</span><span style="color: #098658">8080</span><span style="color: #000000">);</span>
+<a href="#dispatch" id="dispatch" style="color: inherit; text-decoration: none;">
+  <h2>Dispatch</h2>
+</a>
+<p>Once <a href="https://hatsyjs.github.io/router/interfaces/Routing.html">Routing</a> capability applied the request processing can be dispatched by matching route by one of the dispatchers.</p>
+
+<a href="#dispatchbyname" id="dispatchbyname" style="color: inherit; text-decoration: none;">
+  <h3>dispatchByName()</h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">httpListener</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/hatsy&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">dispatchByName</span><span class="hl-1">, </span><span class="hl-2">Routing</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/router&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">createServer</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;http&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">server</span><span class="hl-1"> = </span><span class="hl-6">createServer</span><span class="hl-1">(</span><span class="hl-6">httpListener</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-2">Routing</span><span class="hl-1">.</span><span class="hl-6">for</span><span class="hl-1">(</span><span class="hl-6">dispatchByName</span><span class="hl-1">({</span><br/><span class="hl-1">      </span><span class="hl-2">api:</span><span class="hl-1"> </span><span class="hl-2">apiHandler</span><span class="hl-1">,       </span><span class="hl-7">// Handle API request under `/api` route </span><br/><span class="hl-1">      </span><span class="hl-2">assets:</span><span class="hl-1"> </span><span class="hl-2">assetsHandler</span><span class="hl-1">, </span><span class="hl-7">// Serve static assets under `/assets` route</span><br/><span class="hl-1">    })),</span><br/><span class="hl-1">));</span><br/><br/><span class="hl-2">server</span><span class="hl-1">.</span><span class="hl-6">listen</span><span class="hl-1">(</span><span class="hl-8">8080</span><span class="hl-1">);</span>
 </code></pre>
-				<p><code>dispatchByName()</code> function accepts a map of request processing handlers under route entry names the handler should
-				serve. The handler receives a request processing context with the rest of the route.</p>
-				<a href="#dispatchbypattern" id="dispatchbypattern" style="color: inherit; text-decoration: none;">
-					<h3>dispatchByPattern()</h3>
-				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">httpListener</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/hatsy&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">dispatchByPattern</span><span style="color: #000000">, </span><span style="color: #001080">Routing</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/router&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createServer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http&#039;</span><span style="color: #000000">;</span>
+<p><code>dispatchByName()</code> function accepts a map of request processing handlers under route entry names the handler should
+ serve. The handler receives a request processing context with the rest of the route.</p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #795E26">createServer</span><span style="color: #000000">(</span><span style="color: #795E26">httpListener</span><span style="color: #000000">(</span>
-<span style="color: #000000">    </span><span style="color: #001080">Routing</span><span style="color: #000000">.</span><span style="color: #795E26">for</span><span style="color: #000000">(</span><span style="color: #795E26">dispatchByPattern</span><span style="color: #000000">([</span>
-<span style="color: #000000">      { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;api/v{apiVersion}/**&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">apiHandler</span><span style="color: #000000"> },</span>
-<span style="color: #000000">      { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;**/*.html&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">pageHandler</span><span style="color: #000000"> },</span>
-<span style="color: #000000">      { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;assets/**&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">assetsHandler</span><span style="color: #000000"> },      </span>
-<span style="color: #000000">    ])),</span>
-<span style="color: #000000">));</span>
-
-<span style="color: #001080">server</span><span style="color: #000000">.</span><span style="color: #795E26">listen</span><span style="color: #000000">(</span><span style="color: #098658">8080</span><span style="color: #000000">);</span>
+<a href="#dispatchbypattern" id="dispatchbypattern" style="color: inherit; text-decoration: none;">
+  <h3>dispatchByPattern()</h3>
+</a>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">httpListener</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/hatsy&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">dispatchByPattern</span><span class="hl-1">, </span><span class="hl-2">Routing</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/router&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">createServer</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;http&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">server</span><span class="hl-1"> = </span><span class="hl-6">createServer</span><span class="hl-1">(</span><span class="hl-6">httpListener</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-2">Routing</span><span class="hl-1">.</span><span class="hl-6">for</span><span class="hl-1">(</span><span class="hl-6">dispatchByPattern</span><span class="hl-1">([</span><br/><span class="hl-1">      { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;api/v{apiVersion}/**&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">apiHandler</span><span class="hl-1"> },</span><br/><span class="hl-1">      { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;**/*.html&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">pageHandler</span><span class="hl-1"> },</span><br/><span class="hl-1">      { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;assets/**&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">assetsHandler</span><span class="hl-1"> },      </span><br/><span class="hl-1">    ])),</span><br/><span class="hl-1">));</span><br/><br/><span class="hl-2">server</span><span class="hl-1">.</span><span class="hl-6">listen</span><span class="hl-1">(</span><span class="hl-8">8080</span><span class="hl-1">);</span>
 </code></pre>
-				<p><code>dispatchByPatttern()</code> function accepts dispatch patterns containing a route pattern and handler that serves
-				the matching route. The handler receives a request processing context with matching route tail.</p>
-				<a href="#route-format" id="route-format" style="color: inherit; text-decoration: none;">
-					<h2>Route Format</h2>
-				</a>
-				<p>The route format is <a href="https://hatsyjs.github.io/route-match/interfaces/URLRoute.html">URLRoute</a> by default, while route patterns parsed by <a href="https://hatsyjs.github.io/route-match/globals.html#simpleRoutePattern">simpleRoutePattern()</a>.</p>
-				<p>This can be changed by configuring <a href="https://hatsyjs.github.io/kit/modules/@hatsy_router.html#Routing-1">Routing</a> capability.</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">httpListener</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/hatsy&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matrixRoute</span><span style="color: #000000">, </span><span style="color: #001080">matrixRoutePattern</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/route-match&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">dispatchByPattern</span><span style="color: #000000">, </span><span style="color: #001080">Routing</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@hatsy/router&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">createServer</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;http&#039;</span><span style="color: #000000">; </span><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">matrixRoute</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./matrix-route&#039;</span><span style="color: #000000">;</span>
+<p><code>dispatchByPatttern()</code> function accepts dispatch patterns containing a route pattern and handler that serves
+the matching route. The handler receives a request processing context with matching route tail.</p>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">server</span><span style="color: #000000"> = </span><span style="color: #795E26">createServer</span><span style="color: #000000">(</span><span style="color: #795E26">httpListener</span><span style="color: #000000">(</span>
-<span style="color: #000000">    </span><span style="color: #001080">Routing</span>
-<span style="color: #000000">        .</span><span style="color: #795E26">with</span><span style="color: #000000">({</span>
-<span style="color: #000000">          </span><span style="color: #795E26">buildRoute</span><span style="color: #001080">:</span><span style="color: #000000"> ({ </span><span style="color: #001080">requestAddresses</span><span style="color: #000000">: { </span><span style="color: #001080">url</span><span style="color: #000000"> } }) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">matrixRoute</span><span style="color: #000000">(</span><span style="color: #001080">url</span><span style="color: #000000">),</span>
-<span style="color: #000000">          </span><span style="color: #795E26">routePattern</span><span style="color: #001080">:</span><span style="color: #000000"> </span><span style="color: #001080">pattern</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #795E26">matrixRoutePattern</span><span style="color: #000000">(</span><span style="color: #001080">pattern</span><span style="color: #000000">),</span>
-<span style="color: #000000">        }).</span><span style="color: #795E26">for</span><span style="color: #000000">(</span><span style="color: #795E26">dispatchByPattern</span><span style="color: #000000">([</span>
-<span style="color: #000000">          { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;api;v/**&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">apiHandler</span><span style="color: #000000"> }, </span><span style="color: #008000">// API version as matrix attribute</span>
-<span style="color: #000000">          { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;**/*.html&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">pageHandler</span><span style="color: #000000"> },</span>
-<span style="color: #000000">          { </span><span style="color: #001080">on:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;assets/**&#039;</span><span style="color: #000000">, </span><span style="color: #001080">to:</span><span style="color: #000000"> </span><span style="color: #001080">assetsHandler</span><span style="color: #000000"> },      </span>
-<span style="color: #000000">        ])),</span>
-<span style="color: #000000">));</span>
-
-<span style="color: #001080">server</span><span style="color: #000000">.</span><span style="color: #795E26">listen</span><span style="color: #000000">(</span><span style="color: #098658">8080</span><span style="color: #000000">);</span>
+<a href="#route-format" id="route-format" style="color: inherit; text-decoration: none;">
+  <h2>Route Format</h2>
+</a>
+<p>The route format is <a href="https://hatsyjs.github.io/route-match/interfaces/URLRoute.html">URLRoute</a> by default, while route patterns parsed by <a href="https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern">simpleRoutePattern()</a>.</p>
+<p>This can be changed by configuring <a href="https://hatsyjs.github.io/router/interfaces/Routing.html">Routing</a> capability.</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">httpListener</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/hatsy&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">matrixRoute</span><span class="hl-1">, </span><span class="hl-2">matrixRoutePattern</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/route-match&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">dispatchByPattern</span><span class="hl-1">, </span><span class="hl-2">Routing</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;@hatsy/router&#39;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">createServer</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;http&#39;</span><span class="hl-1">; </span><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">matrixRoute</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;./matrix-route&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">server</span><span class="hl-1"> = </span><span class="hl-6">createServer</span><span class="hl-1">(</span><span class="hl-6">httpListener</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-2">Routing</span><br/><span class="hl-1">        .</span><span class="hl-6">with</span><span class="hl-1">({</span><br/><span class="hl-1">          </span><span class="hl-6">buildRoute</span><span class="hl-2">:</span><span class="hl-1"> ({ </span><span class="hl-2">requestAddresses</span><span class="hl-1">: { </span><span class="hl-2">url</span><span class="hl-1"> } }) </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-6">matrixRoute</span><span class="hl-1">(</span><span class="hl-2">url</span><span class="hl-1">),</span><br/><span class="hl-1">          </span><span class="hl-6">routePattern</span><span class="hl-2">:</span><span class="hl-1"> </span><span class="hl-2">pattern</span><span class="hl-1"> </span><span class="hl-4">=&gt;</span><span class="hl-1"> </span><span class="hl-6">matrixRoutePattern</span><span class="hl-1">(</span><span class="hl-2">pattern</span><span class="hl-1">),</span><br/><span class="hl-1">        }).</span><span class="hl-6">for</span><span class="hl-1">(</span><span class="hl-6">dispatchByPattern</span><span class="hl-1">([</span><br/><span class="hl-1">          { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;api;v/**&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">apiHandler</span><span class="hl-1"> }, </span><span class="hl-7">// API version as matrix attribute</span><br/><span class="hl-1">          { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;**/*.html&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">pageHandler</span><span class="hl-1"> },</span><br/><span class="hl-1">          { </span><span class="hl-2">on:</span><span class="hl-1"> </span><span class="hl-3">&#39;assets/**&#39;</span><span class="hl-1">, </span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">assetsHandler</span><span class="hl-1"> },      </span><br/><span class="hl-1">        ])),</span><br/><span class="hl-1">));</span><br/><br/><span class="hl-2">server</span><span class="hl-1">.</span><span class="hl-6">listen</span><span class="hl-1">(</span><span class="hl-8">8080</span><span class="hl-1">);</span>
 </code></pre>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/routerconfig.html">Router<wbr>Config</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/dispatchnames.html" class="tsd-kind-icon">Dispatch<wbr>Names</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/dispatchpattern.html" class="tsd-kind-icon">Dispatch<wbr>Pattern</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/routermeans.html" class="tsd-kind-icon">Router<wbr>Means</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/routing.html" class="tsd-kind-icon">Routing</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="modules.html#routerconfig" class="tsd-kind-icon">Router<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="modules.html#routing" class="tsd-kind-icon">Routing</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#dispatchbyname" class="tsd-kind-icon">dispatch<wbr>ByName</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="modules.html#dispatchbypattern" class="tsd-kind-icon">dispatch<wbr>ByPattern</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/RouterConfig.html">Router<wbr/>Config</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/DispatchNames.html" class="tsd-kind-icon">Dispatch<wbr/>Names</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/DispatchPattern.html" class="tsd-kind-icon">Dispatch<wbr/>Pattern</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/RouterMeans.html" class="tsd-kind-icon">Router<wbr/>Means</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/Routing.html" class="tsd-kind-icon">Routing</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#RouterConfig" class="tsd-kind-icon">Router<wbr/>Config</a></li><li class="tsd-kind-variable"><a href="modules.html#Routing" class="tsd-kind-icon">Routing</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#dispatchByName" class="tsd-kind-icon">dispatch<wbr/>By<wbr/>Name</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#dispatchByPattern" class="tsd-kind-icon">dispatch<wbr/>By<wbr/>Pattern</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
