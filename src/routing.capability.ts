@@ -86,7 +86,7 @@ class RoutingCapability<TInput, TRoute extends PathRoute>
         routePattern(pattern: string) {
           return routePattern(
               pattern,
-              this as RequestContext<any>,
+              this as RequestContext<any> as RequestContext<TInput & RouterMeans<TRoute>>,
           );
         },
       }));
