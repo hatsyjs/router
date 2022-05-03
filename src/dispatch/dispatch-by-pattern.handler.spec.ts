@@ -34,7 +34,7 @@ describe('dispatchByPattern', () => {
 
   it('follows matching route', async () => {
 
-    const wrongHandler = jest.fn<void, []>();
+    const wrongHandler = jest.fn<() => void>();
 
     server.handleBy(
         Rendering
