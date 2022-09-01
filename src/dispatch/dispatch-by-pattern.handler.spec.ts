@@ -18,7 +18,6 @@ import { Routing } from '../routing.capability';
 import { dispatchByPattern } from './dispatch-by-pattern.handler';
 
 describe('dispatchByPattern', () => {
-
   let server: TestHttpServer;
 
   beforeAll(async () => {
@@ -33,24 +32,23 @@ describe('dispatchByPattern', () => {
   });
 
   it('follows matching route', async () => {
-
     const wrongHandler = jest.fn<() => void>();
 
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern([
-              {
-                on: 'wrong',
-                to: wrongHandler,
-              },
-              {
-                on: 'test',
-                to({ renderJson }) {
-                  renderJson({ response: 'test' });
-                },
-              },
-            ])),
+      Rendering.and(Routing).for(
+        dispatchByPattern([
+          {
+            on: 'wrong',
+            to: wrongHandler,
+          },
+          {
+            on: 'test',
+            to({ renderJson }) {
+              renderJson({ response: 'test' });
+            },
+          },
+        ]),
+      ),
     );
 
     const response = await server.get('/test');
@@ -59,21 +57,20 @@ describe('dispatchByPattern', () => {
     expect(wrongHandler).not.toHaveBeenCalled();
   });
   it('follows nested route', async () => {
-
     const wrongHandler = jest.fn();
 
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'dir/**',
-              to: dispatchByPattern({
-                on: 'test',
-                to({ renderJson }: RequestContext<RenderMeans & RouterMeans>) {
-                  renderJson({ response: 'test' });
-                },
-              }),
-            })),
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: 'dir/**',
+          to: dispatchByPattern({
+            on: 'test',
+            to({ renderJson }: RequestContext<RenderMeans & RouterMeans>) {
+              renderJson({ response: 'test' });
+            },
+          }),
+        }),
+      ),
     );
 
     const response = await server.get('/dir/test');
@@ -82,7 +79,6 @@ describe('dispatchByPattern', () => {
     expect(wrongHandler).not.toHaveBeenCalled();
   });
   it('respects route pattern parser override', async () => {
-
     const wrongHandler = jest.fn();
 
     const nested = dispatchByPattern({
@@ -93,20 +89,17 @@ describe('dispatchByPattern', () => {
     });
 
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'dir/**',
-              async to({ next }) {
-                await next(
-                    nested,
-                    {
-                      route: matrixRoute('test;attr=value'),
-                      routePattern: matrixRoutePattern,
-                    },
-                );
-              },
-            })),
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: 'dir/**',
+          async to({ next }) {
+            await next(nested, {
+              route: matrixRoute('test;attr=value'),
+              routePattern: matrixRoutePattern,
+            });
+          },
+        }),
+      ),
     );
 
     const response = await server.get('/dir/test;attr=value');
@@ -116,14 +109,14 @@ describe('dispatchByPattern', () => {
   });
   it('extracts route tail', async () => {
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'test/**',
-              to({ route, renderJson }) {
-                renderJson({ route: route.toString() });
-              },
-            })),
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: 'test/**',
+          to({ route, renderJson }) {
+            renderJson({ route: route.toString() });
+          },
+        }),
+      ),
     );
 
     const response = await server.get('/test/nested?param=value');
@@ -132,14 +125,14 @@ describe('dispatchByPattern', () => {
   });
   it('uses matching route as tail', async () => {
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'test/nested',
-              to({ route, renderJson }) {
-                renderJson({ route: route.toString() });
-              },
-            })),
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: 'test/nested',
+          to({ route, renderJson }) {
+            renderJson({ route: route.toString() });
+          },
+        }),
+      ),
     );
 
     const response = await server.get('/test/nested?param=value');
@@ -148,26 +141,25 @@ describe('dispatchByPattern', () => {
   });
   it('extracts route tail with custom function', async () => {
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'test/{tail:**}',
-              to({ route, renderJson }) {
-                renderJson({ route: String(route) });
-              },
-              tail({ routeMatch }) {
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: 'test/{tail:**}',
+          to({ route, renderJson }) {
+            renderJson({ route: String(route) });
+          },
+          tail({ routeMatch }) {
+            let tail!: URLRoute;
 
-                let tail!: URLRoute;
+            routeMatch((_type, key, _value, position: RouteMatcher.Position<URLRoute>) => {
+              if (key === 'tail') {
+                tail = position.route.section(position.entryIndex);
+              }
+            });
 
-                routeMatch((_type, key, _value, position: RouteMatcher.Position<URLRoute>) => {
-                  if (key === 'tail') {
-                    tail = position.route.section(position.entryIndex);
-                  }
-                });
-
-                return tail;
-              },
-            })),
+            return tail;
+          },
+        }),
+      ),
     );
 
     const response = await server.get('/test/nested?param=value');
@@ -176,41 +168,47 @@ describe('dispatchByPattern', () => {
   });
   it('captures route matches', async () => {
     server.handleBy(
-        Rendering
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: [rcaptureEntry('dir'), rmatchDirSep, rmatchDirs],
-              to({ routeMatch, renderJson }) {
+      Rendering.and(Routing).for(
+        dispatchByPattern({
+          on: [rcaptureEntry('dir'), rmatchDirSep, rmatchDirs],
+          to({ routeMatch, renderJson }) {
+            const captured: (readonly [string, string | number, any])[] = [];
 
-                const captured: (readonly [string, string | number, any])[] = [];
+            routeMatch((type, key, value, _position): void => {
+              captured.push([type, key, value]);
+            });
 
-                routeMatch((type, key, value, _position): void => {
-                  captured.push([type, key, value]);
-                });
-
-                renderJson(captured);
-              },
-            })),
+            renderJson(captured);
+          },
+        }),
+      ),
     );
 
     const response = await server.get('/test/nested');
 
-    expect(JSON.parse(await response.body())).toEqual([['capture', 'dir', 'test'], ['dirs', 1, 2]]);
+    expect(JSON.parse(await response.body())).toEqual([
+      ['capture', 'dir', 'test'],
+      ['dirs', 1, 2],
+    ]);
   });
   it('builds custom route', async () => {
-    server.handleBy(Rendering.for(
+    server.handleBy(
+      Rendering.for(
         Routing.with<HttpMeans & RenderMeans, MatrixRoute>({
           buildRoute({ requestAddresses }) {
             return matrixRoute(requestAddresses.url);
           },
           routePattern: matrixRoutePattern,
-        }).for(dispatchByPattern({
-          on: 'test;attr/**',
-          to({ fullRoute, renderJson }) {
-            renderJson({ attr: fullRoute.path[0].attrs.get('attr') });
-          },
-        })),
-    ));
+        }).for(
+          dispatchByPattern({
+            on: 'test;attr/**',
+            to({ fullRoute, renderJson }) {
+              renderJson({ attr: fullRoute.path[0].attrs.get('attr') });
+            },
+          }),
+        ),
+      ),
+    );
 
     const response = await server.get('/test;attr=val/nested?param=value');
 
@@ -218,28 +216,32 @@ describe('dispatchByPattern', () => {
   });
   it('extracts URL from trusted forwarding info', async () => {
     server.handleBy(
-        HttpForwarding
-            .with({ trusted: true })
-            .and(Rendering)
-            .and(Routing)
-            .for(dispatchByPattern({
-              on: 'test/**',
-              to({ requestAddresses: { ip }, fullRoute: { url: { href } }, renderJson }) {
-                renderJson({ href, ip });
+      HttpForwarding.with({ trusted: true })
+        .and(Rendering)
+        .and(Routing)
+        .for(
+          dispatchByPattern({
+            on: 'test/**',
+            to({
+              requestAddresses: { ip },
+              fullRoute: {
+                url: { href },
               },
-            })),
+              renderJson,
+            }) {
+              renderJson({ href, ip });
+            },
+          }),
+        ),
     );
 
-    const response = await server.get(
-        '/test/nested?param=value',
-        {
-          family: 4,
-          localAddress: '127.0.0.1',
-          headers: {
-            forwarded: 'host=test.com:8443;proto=https',
-          },
-        },
-    );
+    const response = await server.get('/test/nested?param=value', {
+      family: 4,
+      localAddress: '127.0.0.1',
+      headers: {
+        forwarded: 'host=test.com:8443;proto=https',
+      },
+    });
 
     expect(JSON.parse(await response.body())).toEqual({
       ip: '127.0.0.1',

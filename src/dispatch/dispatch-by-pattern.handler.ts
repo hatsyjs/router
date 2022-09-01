@@ -1,5 +1,18 @@
-import { RequestContext, requestHandler, RequestHandler, RequestHandlerMethod, requestUpdate } from '@hatsy/hatsy/core';
-import { PathRoute, RouteCaptor, routeMatch, RouteMatcher, RoutePattern, URLRoute } from '@hatsy/route-match';
+import {
+  RequestContext,
+  requestHandler,
+  RequestHandler,
+  RequestHandlerMethod,
+  requestUpdate,
+} from '@hatsy/hatsy/core';
+import {
+  PathRoute,
+  RouteCaptor,
+  routeMatch,
+  RouteMatcher,
+  RoutePattern,
+  URLRoute,
+} from '@hatsy/route-match';
 import { isIterable, lazyValue } from '@proc7ts/primitives';
 import type { RouterMeans } from '../router.means';
 
@@ -12,10 +25,9 @@ import type { RouterMeans } from '../router.means';
  * @typeParam TMeans - A type of route processing means.
  */
 export interface DispatchPattern<
-    TRoute extends PathRoute = URLRoute,
-    TMeans extends RouterMeans<TRoute> = RouterMeans<TRoute>,
-    > {
-
+  TRoute extends PathRoute = URLRoute,
+  TMeans extends RouterMeans<TRoute> = RouterMeans<TRoute>,
+> {
   /**
    * A route pattern that should match the route in order to dispatch processing the the {@link to handler}.
    *
@@ -43,16 +55,15 @@ export interface DispatchPattern<
    * present in pattern, then full route extracted.
    */
   tail?(context: RequestContext<TMeans>): TRoute;
-
 }
 
 /**
  * @internal
  */
-function defaultRouteTailExtractor<TRoute extends PathRoute>(
-    { route, routeMatch }: RequestContext<RouterMeans<TRoute>>,
-): TRoute {
-
+function defaultRouteTailExtractor<TRoute extends PathRoute>({
+  route,
+  routeMatch,
+}: RequestContext<RouterMeans<TRoute>>): TRoute {
   let fromEntry: number | undefined;
 
   routeMatch((_type, _name, _arg, position: RouteMatcher.Position<TRoute>) => {
@@ -68,19 +79,14 @@ function defaultRouteTailExtractor<TRoute extends PathRoute>(
  * @internal
  */
 function handlerByDispatchPattern<TRoute extends PathRoute, TMeans extends RouterMeans<TRoute>>(
-    pattern: DispatchPattern<TRoute, TMeans>,
+  pattern: DispatchPattern<TRoute, TMeans>,
 ): RequestHandler<TMeans> {
-
   const { on } = pattern;
   const tail = pattern.tail ? pattern.tail.bind(pattern) : defaultRouteTailExtractor;
 
   return async (context: RequestContext<RouterMeans<TRoute> & TMeans>) => {
-
     const { route, routeMatch: prevMatch, routePattern, next } = context;
-    const patternMatch = routeMatch(
-        route,
-        typeof on === 'string' ? routePattern(on) : on,
-    );
+    const patternMatch = routeMatch(route, typeof on === 'string' ? routePattern(on) : on);
 
     if (!patternMatch) {
       return;
@@ -89,16 +95,16 @@ function handlerByDispatchPattern<TRoute extends PathRoute, TMeans extends Route
     const getTail = lazyValue(() => tail({ ...context, routeMatch: patternMatch }));
 
     await next(
-        pattern.to.bind(pattern),
-        requestUpdate<RouterMeans<TRoute>>({
-          get route() {
-            return getTail();
-          },
-          routeMatch(captor: RouteCaptor<TRoute>): void {
-            prevMatch(captor);
-            patternMatch(captor);
-          },
-        }),
+      pattern.to.bind(pattern),
+      requestUpdate<RouterMeans<TRoute>>({
+        get route() {
+          return getTail();
+        },
+        routeMatch(captor: RouteCaptor<TRoute>): void {
+          prevMatch(captor);
+          patternMatch(captor);
+        },
+      }),
     );
   };
 }
@@ -118,9 +124,9 @@ function handlerByDispatchPattern<TRoute extends PathRoute, TMeans extends Route
  * @returns Route processing handler.
  */
 export function dispatchByPattern<TRoute extends PathRoute, TMeans extends RouterMeans<TRoute>>(
-    routes: DispatchPattern<TRoute, TMeans> | Iterable<DispatchPattern<TRoute, TMeans>>,
+  routes: DispatchPattern<TRoute, TMeans> | Iterable<DispatchPattern<TRoute, TMeans>>,
 ): RequestHandler<TMeans> {
   return isIterable(routes)
-      ? requestHandler(Array.from(routes, handlerByDispatchPattern))
-      : handlerByDispatchPattern(routes);
+    ? requestHandler(Array.from(routes, handlerByDispatchPattern))
+    : handlerByDispatchPattern(routes);
 }

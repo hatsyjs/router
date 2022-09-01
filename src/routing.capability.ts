@@ -14,8 +14,7 @@ import type { RouterMeans } from './router.means';
  * @typeParam TRoute - Supported route type.
  */
 export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute>
-    extends RequestCapability<TInput, RouterMeans<TRoute>> {
-
+  extends RequestCapability<TInput, RouterMeans<TRoute>> {
   /**
    * Configures routing capability that constructs a route by incoming HTTP request.
    *
@@ -23,9 +22,7 @@ export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute
    *
    * @returns New request routing capability.
    */
-  with<TInput extends HttpMeans>(
-      config: RouterConfig.DefaultRoute<TInput>,
-  ): Routing<TInput>;
+  with<TInput extends HttpMeans>(config: RouterConfig.DefaultRoute<TInput>): Routing<TInput>;
 
   /**
    * Configures routing capability with custom route builder.
@@ -35,18 +32,14 @@ export interface Routing<TInput = HttpMeans, TRoute extends PathRoute = URLRoute
    * @returns New request routing capability.
    */
   with<TInput, TRoute extends PathRoute>(
-      config: RouterConfig.CustomRoute<TInput, TRoute>,
+    config: RouterConfig.CustomRoute<TInput, TRoute>,
   ): Routing<TInput, TRoute>;
-
 }
 
 /**
  * @internal
  */
-function buildURLRoute<TMeans, TRoute extends PathRoute>(
-    context: RequestContext<TMeans>,
-): TRoute {
-
+function buildURLRoute<TMeans, TRoute extends PathRoute>(context: RequestContext<TMeans>): TRoute {
   const { requestAddresses } = context as unknown as HttpMeans;
 
   return urlRoute(requestAddresses.url) as unknown as TRoute;
@@ -56,53 +49,54 @@ function buildURLRoute<TMeans, TRoute extends PathRoute>(
  * @internal
  */
 class RoutingCapability<TInput, TRoute extends PathRoute>
-    extends RequestCapability<TInput, RouterMeans<TRoute>>
-    implements Routing<TInput, TRoute> {
+  extends RequestCapability<TInput, RouterMeans<TRoute>>
+  implements Routing<TInput, TRoute> {
 
   readonly for: <TMeans extends TInput>(
-      handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
+    handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
   ) => RequestHandler<TMeans>;
 
   constructor(config: RouterConfig<TInput, TRoute>) {
     super();
 
     const routePattern = config.routePattern
-        ? config.routePattern.bind(config)
-        : simpleRoutePattern;
+      ? config.routePattern.bind(config)
+      : simpleRoutePattern;
     const buildRoute: (context: RequestContext<TInput>) => TRoute = config.buildRoute
-        ? config.buildRoute.bind(config)
-        : buildURLRoute;
+      ? config.buildRoute.bind(config)
+      : buildURLRoute;
 
-    this.for = <TMeans extends TInput>(
+    this.for
+      = <TMeans extends TInput>(
         handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
-    ): RequestHandler<TMeans> => context => {
+      ): RequestHandler<TMeans> => context => {
+        const route: TRoute = buildRoute(context as RequestContext<TInput>);
 
-      const route: TRoute = buildRoute(context as RequestContext<TInput>);
-
-      return context.next(handler, requestExtension({
-        fullRoute: route,
-        route,
-        routeMatch: noop,
-        routePattern(pattern: string) {
-          return routePattern(
-              pattern,
-              this as RequestContext<any> as RequestContext<TInput & RouterMeans<TRoute>>,
-          );
-        },
-      }));
-    };
+        return context.next(
+          handler,
+          requestExtension({
+            fullRoute: route,
+            route,
+            routeMatch: noop,
+            routePattern(pattern: string) {
+              return routePattern(
+                pattern,
+                this as RequestContext<any> as RequestContext<TInput & RouterMeans<TRoute>>,
+              );
+            },
+          }),
+        );
+      };
   }
 
-  with<TInput extends HttpMeans>(
-      config: RouterConfig.DefaultRoute<TInput>,
-  ): Routing<TInput>;
+  with<TInput extends HttpMeans>(config: RouterConfig.DefaultRoute<TInput>): Routing<TInput>;
 
   with<TInput extends HttpMeans, TRoute extends URLRoute>(
-      config: RouterConfig.CustomRoute<TInput, TRoute>,
+    config: RouterConfig.CustomRoute<TInput, TRoute>,
   ): Routing<TInput, TRoute>;
 
   with<TInput extends HttpMeans, TRoute extends URLRoute>(
-      config: RouterConfig<TInput, TRoute>,
+    config: RouterConfig<TInput, TRoute>,
   ): Routing<TInput, TRoute> {
     return new RoutingCapability(config);
   }
@@ -114,4 +108,4 @@ class RoutingCapability<TInput, TRoute extends PathRoute>
  *
  * Can be used directly (for HTTP requests), or {@link Routing.with configured} first.
  */
-export const Routing: Routing = (/*#__PURE__*/ new RoutingCapability<HttpMeans, URLRoute>({}));
+export const Routing: Routing = /*#__PURE__*/ new RoutingCapability<HttpMeans, URLRoute>({});

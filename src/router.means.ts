@@ -6,7 +6,6 @@ import type { PathRoute, RouteMatch, RoutePattern, URLRoute } from '@hatsy/route
  * @typeParam TRoute - A type of supported route.
  */
 export interface RouterMeans<TRoute extends PathRoute = URLRoute> {
-
   /**
    * Original route.
    *
@@ -30,5 +29,4 @@ export interface RouterMeans<TRoute extends PathRoute = URLRoute> {
    * A parser of route pattern string.
    */
   routePattern(pattern: string): RoutePattern<TRoute>;
-
 }

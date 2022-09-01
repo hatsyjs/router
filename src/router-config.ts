@@ -10,11 +10,10 @@ import type { RouterMeans } from './router.means';
  * @typeParam TRoute - Supported route type.
  */
 export type RouterConfig<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> =
-    | RouterConfig.DefaultRoute<TMeans, TRoute>
-    | RouterConfig.CustomRoute<TMeans, TRoute>;
+  | RouterConfig.DefaultRoute<TMeans, TRoute>
+  | RouterConfig.CustomRoute<TMeans, TRoute>;
 
 export namespace RouterConfig {
-
   /**
    * Base router configuration.
    *
@@ -22,7 +21,6 @@ export namespace RouterConfig {
    * @typeParam TRoute - Supported route type.
    */
   export interface Base<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> {
-
     /**
      * A parser of route pattern string.
      *
@@ -33,8 +31,10 @@ export namespace RouterConfig {
      *
      * @default Supports patterns in simple format (`simpleRoutePattern()`).
      */
-    routePattern?(pattern: string, context: RequestContext<TMeans & RouterMeans<TRoute>>): RoutePattern<TRoute>;
-
+    routePattern?(
+      pattern: string,
+      context: RequestContext<TMeans & RouterMeans<TRoute>>,
+    ): RoutePattern<TRoute>;
   }
 
   /**
@@ -43,10 +43,9 @@ export namespace RouterConfig {
    * @typeParam TMeans - A type of incoming request processing means.
    * @typeParam TRoute - Supported route type.
    */
-  export interface DefaultRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> extends Base<TMeans, TRoute> {
-
+  export interface DefaultRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute>
+    extends Base<TMeans, TRoute> {
     readonly buildRoute?: undefined;
-
   }
 
   /**
@@ -54,8 +53,8 @@ export namespace RouterConfig {
    *
    * @typeParam TMeans - A type of incoming HTTP request processing means.
    */
-  export interface CustomRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute> extends Base<TMeans, TRoute> {
-
+  export interface CustomRoute<TMeans = HttpMeans, TRoute extends PathRoute = URLRoute>
+    extends Base<TMeans, TRoute> {
     /**
      * Builds a route based on incoming request.
      *
@@ -66,7 +65,5 @@ export namespace RouterConfig {
      * @default Builds a route based on {@link HttpMeans.Addresses.url request URL} (for HTTP requests).
      */
     buildRoute(context: RequestContext<TMeans>): TRoute;
-
   }
-
 }
