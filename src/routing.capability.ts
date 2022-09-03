@@ -66,8 +66,8 @@ class RoutingCapability<TInput, TRoute extends PathRoute>
       ? config.buildRoute.bind(config)
       : buildURLRoute;
 
-    this.for
-      = <TMeans extends TInput>(
+    this.for =
+      <TMeans extends TInput>(
         handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
       ): RequestHandler<TMeans> => context => {
         const route: TRoute = buildRoute(context as RequestContext<TInput>);
