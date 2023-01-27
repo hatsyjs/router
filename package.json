@@ -1,6 +1,6 @@
 {
   "name": "@hatsy/router",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Hatsy router",
   "keywords": [
     "http-middleware",
