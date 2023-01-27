@@ -25,7 +25,7 @@
     "default": "./dist/router.js"
   },
   "dependencies": {
-    "@hatsy/http-header-value": "^3.6.0",
+    "@hatsy/http-header-value": "^3.7.0",
     "@hatsy/route-match": "^1.4.0",
     "@proc7ts/primitives": "^3.0.2"
   },
