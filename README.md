@@ -23,7 +23,7 @@
 ## Routing
 
 This module contains a [Routing] capability that extends request processing context with
-[request routing means][routermeans].
+[request routing means][RouterMeans].
 
 The latter has the following properties:
 
@@ -33,8 +33,8 @@ The latter has the following properties:
 
 The [@hatsy/route-match] library performs route parsing and matching.
 
-[routing]: https://hatsyjs.github.io/router/interfaces/Routing.html
-[routermeans]: https://hatsyjs.github.io/router/interfaces/RouterMeans.html
+[Routing]: https://hatsyjs.github.io/router/variables/Routing-1.html
+[RouterMeans]: https://hatsyjs.github.io/router/interfaces/RouterMeans.html
 [@hatsy/route-match]: https://www.npmjs.com/package/@hatsy/route-match
 
 ## Dispatch
@@ -87,7 +87,7 @@ const server = createServer(
 server.listen(8080);
 ```
 
-`dispatchByPatttern()` function accepts dispatch patterns containing a route pattern and handler that serves
+`dispatchByPattern()` function accepts dispatch patterns containing a route pattern and handler that serves
 the matching route. The handler receives a request processing context with matching route tail.
 
 ## Route Format
@@ -121,5 +121,5 @@ const server = createServer(
 server.listen(8080);
 ```
 
-[urlroute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
-[simpleroutepattern()]: https://hatsyjs.github.io/route-match/modules.html#simpleRoutePattern
+[URLRoute]: https://hatsyjs.github.io/route-match/interfaces/URLRoute.html
+[simpleRoutePattern()]: https://hatsyjs.github.io/route-match/functions/simpleRoutePattern.html
