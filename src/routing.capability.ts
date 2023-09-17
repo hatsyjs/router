@@ -1,9 +1,9 @@
 import type { HttpMeans, RequestHandler } from '@hatsy/hatsy';
-import { RequestCapability, RequestContext, requestExtension } from '@hatsy/hatsy/core';
+import { RequestCapability, RequestContext, requestExtension } from '@hatsy/hatsy/core.js';
 import { PathRoute, simpleRoutePattern, urlRoute, URLRoute } from '@hatsy/route-match';
 import { noop } from '@proc7ts/primitives';
-import type { RouterConfig } from './router-config';
-import type { RouterMeans } from './router.means';
+import type { RouterConfig } from './router-config.js';
+import type { RouterMeans } from './router.means.js';
 
 /**
  * Request routing capability.
