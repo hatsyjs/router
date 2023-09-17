@@ -25,15 +25,15 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "http-header-value": "^4.0.0",
-    "@hatsy/route-match": "^2.0.0-pre.0",
-    "@proc7ts/primitives": "^4.0.1"
+    "@hatsy/route-match": "^2.0.0",
+    "@proc7ts/primitives": "^4.0.1",
+    "http-header-value": "^4.0.0"
   },
   "peerDependencies": {
-    "@hatsy/hatsy": "^3.0.0-pre.0"
+    "@hatsy/hatsy": "^3.0.0"
   },
   "devDependencies": {
-    "@hatsy/hatsy": "^3.0.0-pre.0",
+    "@hatsy/hatsy": "^3.0.0",
     "@jest/globals": "^29.7.0",
     "@proc7ts/logger": "^2.0.0",
     "@run-z/eslint-config": "^3.5.0",
