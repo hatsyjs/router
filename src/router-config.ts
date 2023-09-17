@@ -1,7 +1,7 @@
 import type { HttpMeans } from '@hatsy/hatsy';
-import type { RequestContext } from '@hatsy/hatsy/core';
+import type { RequestContext } from '@hatsy/hatsy/core.js';
 import type { PathRoute, RoutePattern, URLRoute } from '@hatsy/route-match';
-import type { RouterMeans } from './router.means';
+import type { RouterMeans } from './router.means.js';
 
 /**
  * Router configuration.

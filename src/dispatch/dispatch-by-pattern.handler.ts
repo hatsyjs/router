@@ -4,7 +4,7 @@ import {
   RequestHandler,
   RequestHandlerMethod,
   requestUpdate,
-} from '@hatsy/hatsy/core';
+} from '@hatsy/hatsy/core.js';
 import {
   PathRoute,
   RouteCaptor,
@@ -14,7 +14,7 @@ import {
   URLRoute,
 } from '@hatsy/route-match';
 import { isIterable, lazyValue } from '@proc7ts/primitives';
-import type { RouterMeans } from '../router.means';
+import type { RouterMeans } from '../router.means.js';
 
 /**
  * Routing dispatch pattern.

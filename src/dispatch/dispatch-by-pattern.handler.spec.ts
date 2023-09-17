@@ -1,6 +1,6 @@
 import { HttpForwarding, HttpMeans, Rendering, RenderMeans } from '@hatsy/hatsy';
-import type { RequestContext } from '@hatsy/hatsy/core';
-import { TestHttpServer } from '@hatsy/hatsy/testing';
+import type { RequestContext } from '@hatsy/hatsy/core.js';
+import { TestHttpServer } from '@hatsy/hatsy/testing.js';
 import type { RouteMatcher } from '@hatsy/route-match';
 import {
   MatrixRoute,
@@ -13,9 +13,9 @@ import {
 } from '@hatsy/route-match';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { noop } from '@proc7ts/primitives';
-import type { RouterMeans } from '../router.means';
-import { Routing } from '../routing.capability';
-import { dispatchByPattern } from './dispatch-by-pattern.handler';
+import type { RouterMeans } from '../router.means.js';
+import { Routing } from '../routing.capability.js';
+import { dispatchByPattern } from './dispatch-by-pattern.handler.js';
 
 describe('dispatchByPattern', () => {
   let server: TestHttpServer;

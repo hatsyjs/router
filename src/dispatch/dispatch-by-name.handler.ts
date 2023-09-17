@@ -1,5 +1,9 @@
-import type { RequestHandler, RequestHandlerMethod, RequestModification } from '@hatsy/hatsy/core';
-import type { RouterMeans } from '../router.means';
+import type {
+  RequestHandler,
+  RequestHandlerMethod,
+  RequestModification,
+} from '@hatsy/hatsy/core.js';
+import type { RouterMeans } from '../router.means.js';
 
 /**
  * Request processing handlers for route entry names.

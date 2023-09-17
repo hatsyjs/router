@@ -1,11 +1,11 @@
 import { Rendering, RenderMeans } from '@hatsy/hatsy';
-import { Logging, RequestContext } from '@hatsy/hatsy/core';
-import { TestHttpServer } from '@hatsy/hatsy/testing';
+import { Logging, RequestContext } from '@hatsy/hatsy/core.js';
+import { TestHttpServer } from '@hatsy/hatsy/testing.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from '@jest/globals';
 import { silentLogger } from '@proc7ts/logger';
-import type { RouterMeans } from '../router.means';
-import { Routing } from '../routing.capability';
-import { dispatchByName } from './dispatch-by-name.handler';
+import type { RouterMeans } from '../router.means.js';
+import { Routing } from '../routing.capability.js';
+import { dispatchByName } from './dispatch-by-name.handler.js';
 
 describe('dispatchByName', () => {
   let server: TestHttpServer;
