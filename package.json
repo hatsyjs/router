@@ -26,7 +26,7 @@
   "sideEffects": false,
   "dependencies": {
     "@hatsy/route-match": "^2.0.0",
-    "@proc7ts/primitives": "workspace:@proc7ts/primitives@^4.0.0",
+    "@proc7ts/primitives": "@proc7ts/primitives@^4.0.0",
     "http-header-value": "^4.0.0"
   },
   "peerDependencies": {
