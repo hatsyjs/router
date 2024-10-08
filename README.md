@@ -12,9 +12,9 @@
 [build-status-img]: https://github.com/hatsyjs/router/workflows/Build/badge.svg
 [build-status-link]: https://github.com/hatsyjs/router/actions?query=workflow:Build
 [quality-img]: https://app.codacy.com/project/badge/Grade/efc90a7b4a2846afb23be5975ad5fbed
-[quality-link]: https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&utm_medium=referral&utm_content=hatsyjs/router&utm_campaign=Badge_Grade
+[quality-link]: https://app.codacy.com/gh/hatsyjs/router/dashboard?utm_source=gh&utm_medium=referral&utm_content=hatsyjs/router&utm_campaign=Badge_Grade
 [coverage-img]: https://app.codacy.com/project/badge/Coverage/efc90a7b4a2846afb23be5975ad5fbed
-[coverage-link]: https://www.codacy.com/gh/hatsyjs/router/dashboard?utm_source=github.com&utm_medium=referral&utm_content=hatsyjs/router&utm_campaign=Badge_Coverage
+[coverage-link]: https://app.codacy.com/gh/hatsyjs/router/dashboard?utm_source=gh&utm_medium=referral&utm_content=hatsyjs/router&utm_campaign=Badge_Coverage
 [github-image]: https://img.shields.io/static/v1?logo=github&label=GitHub&message=project&color=informational
 [github-url]: https://github.com/hatsyjs/router
 [api-docs-image]: https://img.shields.io/static/v1?logo=typescript&label=API&message=docs&color=informational
