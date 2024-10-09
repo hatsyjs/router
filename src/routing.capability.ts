@@ -50,8 +50,8 @@ function buildURLRoute<TMeans, TRoute extends PathRoute>(context: RequestContext
  */
 class RoutingCapability<TInput, TRoute extends PathRoute>
   extends RequestCapability<TInput, RouterMeans<TRoute>>
-  implements Routing<TInput, TRoute> {
-
+  implements Routing<TInput, TRoute>
+{
   readonly for: <TMeans extends TInput>(
     handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
   ) => RequestHandler<TMeans>;
@@ -69,7 +69,8 @@ class RoutingCapability<TInput, TRoute extends PathRoute>
     this.for =
       <TMeans extends TInput>(
         handler: RequestHandler<TMeans & RouterMeans<TRoute>>,
-      ): RequestHandler<TMeans> => context => {
+      ): RequestHandler<TMeans> =>
+      context => {
         const route: TRoute = buildRoute(context as RequestContext<TInput>);
 
         return context.next(
@@ -100,7 +101,6 @@ class RoutingCapability<TInput, TRoute extends PathRoute>
   ): Routing<TInput, TRoute> {
     return new RoutingCapability(config);
   }
-
 }
 
 /**
